@@ -5,6 +5,7 @@ import {
   Paperclip, Plus, Search, Settings2, ShieldCheck, SlidersHorizontal, Sparkles,
   Stethoscope, TrendingUp, UserRound, X, type LucideIcon,
 } from "lucide-react";
+import "./phone.css";
 
 type Tab = "home" | "calendar" | "records" | "search" | "profile";
 type AddMode = "event" | "document" | null;
@@ -270,7 +271,7 @@ function AddSheet({ mode, onClose, onDone }: { mode: AddMode; onClose: () => voi
   );
 }
 
-export default function App() {
+export function PhonePage() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>("home");
   const [addMode, setAddMode] = useState<AddMode>(null);

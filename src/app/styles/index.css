@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  font-family: "Manrope", sans-serif;
+  color: #20202a;
+  background: #f2f1f7;
+  font-synthesis: none;
+  --ink: #20202a;
+  --muted: #73727f;
+  --line: #e8e7ed;
+  --surface: #ffffff;
+  --wash: #f7f6fa;
+  --primary: #6558d9;
+  --primary-dark: #5144c3;
+  --primary-soft: #efedff;
+  --success: #247f63;
+  --success-soft: #e8f6f1;
+  --warning: #a85c2b;
+  --warning-soft: #fff2e8;
+  --danger: #c45161;
+  --shadow: 0 12px 32px rgba(43, 39, 76, 0.08);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #f2f1f7; }
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, input:focus-visible { outline: 3px solid rgba(101, 88, 217, 0.25); outline-offset: 2px; }

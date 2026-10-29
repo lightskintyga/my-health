@@ -87,3 +87,6 @@
 @media (min-width: 1500px) {
   .desktop-app { grid-template-columns: 270px 1fr; }.desktop-content { padding-left: 50px; padding-right: 50px; }.desktop-dashboard-grid { grid-template-columns: minmax(0,1fr) 330px; gap: 30px; }
 }
+@media (min-width: 700px) {
+  .desktop-app { margin: 24px 0; }
+}

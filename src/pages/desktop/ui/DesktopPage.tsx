@@ -154,7 +154,7 @@ function ArrowIcon() {
   return <ChevronRight size={16} />;
 }
 
-export default function DesktopApp() {
+export function DesktopPage() {
   const [activeTab, setActiveTab] = useState<DesktopTab>("home");
   const [adding, setAdding] = useState(false);
   return (
