@@ -917,6 +917,67 @@
   line-height: 1.6;
 }
 
+/* Motion: one orchestrated "result sheet" moment, then quiet micro-interactions */
+@keyframes landing-sheet-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes landing-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes landing-marker-in {
+  from { transform: translateX(-50%) scaleY(0); }
+  to { transform: translateX(-50%) scaleY(1); }
+}
+@keyframes landing-draw-line {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes landing-stamp-in {
+  0% { opacity: 0; transform: rotate(-4deg) scale(1.3); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: rotate(-4deg) scale(1); }
+}
+@keyframes landing-check-in {
+  from { transform: scale(0.6); }
+  to { transform: scale(1); }
+}
+@keyframes landing-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes landing-success-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.landing) { scroll-behavior: smooth; }
+
+  .result-sheet { animation: landing-sheet-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .stamp { animation: landing-stamp-in 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.15) 0.5s both; }
+  .range-marker {
+    transform-origin: bottom center;
+    animation: landing-marker-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both;
+  }
+  .trend-line {
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+    animation: landing-draw-line 0.95s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+  }
+  .trend-area { animation: landing-fade-in 0.7s ease-out 0.7s both; }
+  .sheet-trend circle { animation: landing-fade-in 0.35s ease-out 0.95s both; }
+
+  .landing .button svg { transition: transform 0.18s ease; }
+  .landing .button:hover svg { transform: translateX(3px); }
+  .benefit a svg { transition: transform 0.18s ease; }
+  .benefit a:hover svg { transform: translateX(3px); }
+
+  .interest.active .interest-check svg { animation: landing-check-in 0.18s ease-out; }
+  .site-nav.open { animation: landing-menu-in 0.18s ease-out; }
+  .form-success { animation: landing-success-in 0.28s ease-out; }
+}
+
 @media (max-width: 1024px) {
   .hero-grid { gap: 48px; }
   .benefit-grid { gap: 16px; }
