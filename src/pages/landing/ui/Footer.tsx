@@ -10,9 +10,8 @@ export function Footer() {
         </div>
         <nav aria-label="Ссылки в подвале">
           <a href="#security">Приватность</a>
-          <a href="mailto:hello@myhealth.app">hello@myhealth.app</a>
         </nav>
-        <p className="footer-legal">© 2025 MyHealth. Не является медицинским сервисом и не заменяет консультацию врача.</p>
+        <p className="footer-legal">© 2026 MyHealth. Не является медицинским сервисом и не заменяет консультацию врача.</p>
       </div>
     </footer>
   );

@@ -6,7 +6,6 @@ const navLinks = [
   { href: "#about", label: "Возможности" },
   { href: "#how", label: "Как работает" },
   { href: "#security", label: "Безопасность" },
-  { href: "?view=phone", label: "Прототип" },
 ];
 
 export function Header() {
