@@ -1,6 +1,5 @@
 import "./landing.css";
 import { BenefitsSection } from "./BenefitsSection";
-import { ChaosStrip } from "./ChaosStrip";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
@@ -16,7 +15,6 @@ export function LandingPage() {
       <Header />
       <main id="main">
         <Hero />
-        <ChaosStrip />
         <BenefitsSection />
         <WorkflowSection />
         <SecuritySection />
