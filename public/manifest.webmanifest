@@ -1,0 +1,18 @@
+{
+  "name": "MyHealth — медицинская история",
+  "short_name": "MyHealth",
+  "description": "События, документы и показатели здоровья в одном месте",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6558d9",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
