@@ -21,7 +21,10 @@ export function WorkflowSection() {
             {steps.map(({ number, title, text }) => (
               <li className="step" key={number}>
                 <span className="step-num">{number}</span>
-                <div><h3>{title}</h3><p>{text}</p></div>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
               </li>
             ))}
           </ol>
@@ -29,17 +32,32 @@ export function WorkflowSection() {
 
         <div className="history-panel">
           <div className="panel-head">
-            <div><span>История</span><strong>24 записи</strong></div>
-            <button className="icon-button" type="button" aria-label="Искать в истории"><Search size={18} aria-hidden="true" /></button>
+            <div>
+              <span>История</span>
+              <strong>24 записи</strong>
+            </div>
+            <button className="icon-button" type="button" aria-label="Искать в истории">
+              <Search size={18} aria-hidden="true" />
+            </button>
           </div>
           <div className="panel-filters" aria-label="Фильтры истории">
-            <span className="active">Все</span><span>Анализы</span><span>Приёмы</span>
+            <span className="active">Все</span>
+            <span>Анализы</span>
+            <span>Приёмы</span>
           </div>
           {historyRecords.map(([date, month, title, meta, tone]) => (
             <div className="panel-record" key={title}>
-              <time><strong>{date}</strong><span>{month}</span></time>
-              <span className={`record-icon ${tone}`} aria-hidden="true"><FileHeart size={18} /></span>
-              <span className="record-copy"><strong>{title}</strong><span>{meta}</span></span>
+              <time>
+                <strong>{date}</strong>
+                <span>{month}</span>
+              </time>
+              <span className={`record-icon ${tone}`} aria-hidden="true">
+                <FileHeart size={18} />
+              </span>
+              <span className="record-copy">
+                <strong>{title}</strong>
+                <span>{meta}</span>
+              </span>
               <ChevronRight size={17} className="record-arrow" aria-hidden="true" />
             </div>
           ))}

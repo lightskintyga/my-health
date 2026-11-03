@@ -22,9 +22,13 @@ export function Header() {
           aria-label="Основная навигация"
         >
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
+            <a key={link.href} href={link.href} onClick={closeMenu}>
+              {link.label}
+            </a>
           ))}
-          <a className="nav-cta" href="#signup" onClick={closeMenu}>Стать beta-тестером</a>
+          <a className="nav-cta" href="#signup" onClick={closeMenu}>
+            Стать beta-тестером
+          </a>
         </nav>
         <button
           className="menu-button"

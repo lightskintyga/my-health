@@ -11,7 +11,9 @@ import { WorkflowSection } from "./WorkflowSection";
 export function LandingPage() {
   return (
     <div className="landing" id="top">
-      <a className="skip-link" href="#main">Перейти к содержанию</a>
+      <a className="skip-link" href="#main">
+        Перейти к содержанию
+      </a>
       <Header />
       <main id="main">
         <Hero />

@@ -21,8 +21,24 @@
   --danger: #c45161;
   --shadow: 0 12px 32px rgba(43, 39, 76, 0.08);
 }
-* { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; min-height: 100vh; background: #f2f1f7; }
-button, input { font: inherit; }
-button { -webkit-tap-highlight-color: transparent; }
-button:focus-visible, input:focus-visible { outline: 3px solid rgba(101, 88, 217, 0.25); outline-offset: 2px; }
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f2f1f7;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(101, 88, 217, 0.25);
+  outline-offset: 2px;
+}
