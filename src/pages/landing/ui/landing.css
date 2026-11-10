@@ -1230,9 +1230,32 @@
   outline: 2px solid var(--cobalt);
   outline-offset: 3px;
 }
+.form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 11px 12px;
+  color: var(--amber);
+  background: var(--amber-soft);
+  border: 1px solid var(--amber);
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.form-error svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
 .landing .submit {
   width: 100%;
   margin-top: 20px;
+}
+.landing .button:disabled,
+.landing .button:disabled:hover {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 .form-privacy {
   display: flex;

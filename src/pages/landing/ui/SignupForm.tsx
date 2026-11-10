@@ -1,14 +1,49 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Check, CheckCircle2, LockKeyhole } from "lucide-react";
+import { ArrowRight, Check, CheckCircle2, CircleAlert, LockKeyhole } from "lucide-react";
 import { interestOptions, type Interest } from "../model/content";
+import { BetaSignupError, signupForBeta } from "../api/beta";
 
 export function SignupForm() {
   const [interest, setInterest] = useState<Interest>("both");
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+
+    if (pending) {
+      return;
+    }
+
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+
+    if (!name) {
+      setError("Укажите имя — так мы будем знать, к кому обращаться.");
+      return;
+    }
+
+    setError(null);
+    setPending(true);
+
+    try {
+      await signupForBeta({
+        name,
+        email,
+        isAcceptRules: data.get("consent") === "on",
+      });
+      setSubmitted(true);
+    } catch (cause) {
+      setError(
+        cause instanceof BetaSignupError
+          ? cause.message
+          : "Не удалось отправить заявку. Попробуйте ещё раз позже.",
+      );
+    } finally {
+      setPending(false);
+    }
   }
 
   if (submitted) {
@@ -25,7 +60,10 @@ export function SignupForm() {
         <button
           className="button button-secondary"
           type="button"
-          onClick={() => setSubmitted(false)}
+          onClick={() => {
+            setSubmitted(false);
+            setError(null);
+          }}
         >
           Отправить ещё одну заявку
         </button>
@@ -34,7 +72,7 @@ export function SignupForm() {
   }
 
   return (
-    <form className="signup-form" onSubmit={submit}>
+    <form className="signup-form" onSubmit={submit} aria-busy={pending}>
       <div className="form-heading">
         <p className="mono-label">Ранний доступ</p>
         <h2>Помогите сделать MyHealth полезнее</h2>
@@ -65,7 +103,7 @@ export function SignupForm() {
       <div className="field-row">
         <label className="field">
           <span>Как вас зовут</span>
-          <input required name="name" autoComplete="given-name" placeholder="Анна" />
+          <input required name="name" autoComplete="given-name" maxLength={64} placeholder="Анна" />
         </label>
         <label className="field">
           <span>Email</span>
@@ -75,6 +113,7 @@ export function SignupForm() {
             name="email"
             autoComplete="email"
             spellCheck={false}
+            maxLength={64}
             placeholder="anna@example.com"
           />
         </label>
@@ -88,8 +127,21 @@ export function SignupForm() {
         <span>Соглашаюсь на обработку данных и получение писем о beta-тестировании</span>
       </label>
 
-      <button className="button button-primary submit" type="submit">
-        Оставить заявку <ArrowRight size={18} aria-hidden="true" />
+      {error && (
+        <p className="form-error" role="alert">
+          <CircleAlert size={16} aria-hidden="true" />
+          {error}
+        </p>
+      )}
+
+      <button className="button button-primary submit" type="submit" disabled={pending}>
+        {pending ? (
+          "Отправляем…"
+        ) : (
+          <>
+            Оставить заявку <ArrowRight size={18} aria-hidden="true" />
+          </>
+        )}
       </button>
       <p className="form-privacy">
         <LockKeyhole size={14} aria-hidden="true" /> Никакого спама. Только новости о запуске
